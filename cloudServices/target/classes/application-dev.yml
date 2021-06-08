@@ -1,0 +1,27 @@
+server:
+  port: 8701 # 服务提供方
+
+# 指定当前eureka客户端的注册地址,
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8700/eureka
+  instance:
+    hostname: localhost
+
+#当前服务名称
+spring:
+  application:
+    name: eureka-service
+
+    #datasource
+  datasource:
+    username: cz
+    password: 123
+    url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+
+
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+

@@ -5,6 +5,7 @@ import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -30,6 +31,12 @@ public class ConsumerController {
        // ServiceInstance serviceInstance  =  loadBalancerClient.choose("EUREKA-SERVICE");
        // String forObject =new RestTemplate().getForObject("http://"+serviceInstance.getHost()+":"+serviceInstance.getPort()+"/Hello/World?s="+s,String.class);
 
+        return forObject;
+    }
+
+    @RequestMapping("/getUser")
+    public String getUser(@RequestParam("fname_l2") String fname_l2){
+        String   forObject = restTemplate.getForObject("http://EUREKA-SERVICE:8071/Hello/getUser?fname_l2=" + fname_l2,String.class);
         return forObject;
     }
 
