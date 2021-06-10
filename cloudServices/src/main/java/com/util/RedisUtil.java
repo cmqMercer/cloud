@@ -1,7 +1,8 @@
 package com.util;
 
 import lombok.Cleanup;
-import org.apache.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -9,8 +10,9 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
 @Component
+@Slf4j
 public class RedisUtil {
-    protected static Logger logger = Logger.getLogger(RedisUtil.class);
+
     @Autowired
     private JedisPool jedisPool;
 
@@ -22,8 +24,9 @@ public class RedisUtil {
         value = StringUtils.isEmpty(value) ? "" : value;
         @Cleanup Jedis jedis = jedisPool.getResource();
           jedis.set(key,value);
+            log.info("Set key success");
         } catch (Exception e) {
-            logger.error("Set key error : "+e);
+            log.error("Set key error : "+e);
         }
     }
 
@@ -38,8 +41,9 @@ public class RedisUtil {
             value = StringUtils.isEmpty(value) ? "" : value;
             @Cleanup Jedis jedis = jedisPool.getResource();
             jedis.setex(key, seconds, value);
+            log.info("Setex key success");
         } catch (Exception e) {
-            logger.error("Set keyex error : "+e);
+            log.error("Set keyex error : "+e);
         }
     }
 
