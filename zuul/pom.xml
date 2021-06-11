@@ -5,25 +5,16 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com</groupId>
-  <artifactId>cz</artifactId>
-  <packaging>pom</packaging>
+  <artifactId>zuul</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <modules>
-    <module>cloudServer</module>
-    <module>cloudServices</module>
-    <module>cloudConsumer</module>
-    <module>zuul</module>
-  </modules>
 
-
-  <name>cz</name>
+  <name>zuul</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
-
   <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.5.7.RELEASE</version>
+    <groupId>com</groupId>
+    <artifactId>cz</artifactId>
+    <version>1.0-SNAPSHOT</version>
   </parent>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -38,8 +29,28 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
-  </dependencies>
 
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+    </dependency>
+  </dependencies>
+  <!--指定下载源和使用springcloud的版本-->
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>Edgware.SR5</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>

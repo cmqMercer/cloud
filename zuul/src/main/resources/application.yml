@@ -1,0 +1,19 @@
+server:
+  port: 8703
+spring:
+  application:
+    name: zuul-service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8700/eureka/
+  instance:
+    prefer-ip-address: true
+zuul:
+  routes:
+    spring-person: #服务工程名字
+      path: /hello/** #配置url请求规则
+      serviceId: eureka-service #服务名称
+#    spring-user:
+#      path: /user/**
+#      erviceId: cxy-user-service
