@@ -7,7 +7,7 @@
   <groupId>com</groupId>
   <artifactId>cloudServer</artifactId>
   <version>1.0-SNAPSHOT</version>
-
+  <packaging>jar</packaging>
   <name>cloudServer</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
@@ -16,6 +16,7 @@
     <groupId>com</groupId>
     <artifactId>cz</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
